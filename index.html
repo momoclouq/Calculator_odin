@@ -2,9 +2,48 @@
 <html>
     <head>
         <title>New Calculator</title>
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
+        <div id="container">
+            <!--numbers-->
+            <div id="header">
+                <h1>Minh's calculator</h1>
+            </div>
+
+            <div id="calculator">
+                <div id="output"></div>
+
+                <div id="numpad">
+                    <button id="1">1</button>
+                    <button id="2">2</button>
+                    <button id="3">3</button>
+                    <button id="4">4</button>
+                    <button id="5">5</button>
+                    <button id="6">6</button>
+                    <button id="7">7</button>
+                    <button id="8">8</button>
+                    <button id="9">9</button>
+                </div>
+    
+                <!--operators-->
+                <div id="operators">
+                    <button id="addition">+</button>
+                    <button id="subtraction">-</button>
+                    <button id="multiplication">*</button>
+                    <button id="division">/</button>
+                </div>
+    
+                <!--equal/clear keys-->
+                <div id="key-functions">
+                    <button id="calculate">equal</button>
+                    <button id="clear">clear</button>
+                </div>
+            </div>
+        </div>
+        
+
         <script src="script.js"></script>
     </body>
 </html>

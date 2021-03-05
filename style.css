@@ -1,0 +1,43 @@
+#header h1 {
+    border: 1px solid black;
+    text-align: center;
+}
+
+#calculator {
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    border: 1px solid black;
+    margin: 0 auto;
+    margin-top: 50%;
+    padding: 5px;
+}
+
+#calculator * {
+    margin-bottom: 2px;
+}
+
+#calculator #output {
+    border: 1px solid black;
+    border-radius: 5px;;
+    min-height: 30px;
+    width: 100%;
+}
+
+#numpad {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+#operators {
+    display: flex;
+    flex-direction: column;
+}
+
+#key-functions {
+    display: grid;
+    grid-column: auto;
+}
