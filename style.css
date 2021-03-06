@@ -32,6 +32,10 @@
     grid-template-columns: auto auto auto;
 }
 
+#numpad #btn0 {
+    margin-left: 50%;
+}
+
 #operators {
     display: flex;
     flex-direction: column;

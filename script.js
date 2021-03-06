@@ -8,14 +8,21 @@ function subtract(x, y) {
 }
 
 function multiply(x, y){
-    return x * y;
+    return Math.round(x * y * 1000) / 1000
 }
 
 function divide(x, y){
-    return x / y;
+    if (Math.round(x/y*1000) / 1000 === 0){
+        let count = 4;
+        while (Math.round(x/y * Math.pow(10,count)) / Math.pow(10,count) == 0){
+            count++;
+        }
+        return Math.round(x/y * Math.pow(10, count)) / Math.pow(10, count);
+    } else return Math.round(x/y*1000) / 1000;
 }
 
 //function to control the main
+//rounding to minimum 4 decimal
 function operate(num1, num2, operator){
     if (operator == "+") return add(num1, num2);
     if (operator == "-") return subtract(num1, num2);
