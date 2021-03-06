@@ -119,3 +119,9 @@ calculateBtn.addEventListener("click", function(){
         }, 2000);
     }
 });
+
+
+//styling
+allBtnNumpad.forEach(function(element){
+    element.style.backgroundColor = "#b6bfb8";
+});
