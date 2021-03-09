@@ -132,12 +132,6 @@ function equality(){
     }
 }
 
-
-//styling
-allBtnNumpad.forEach(function(element){
-    element.style.backgroundColor = "#b6bfb8";
-});
-
 //keyboard input
 window.addEventListener('keydown', function(e){
     let key = e.key;
@@ -146,3 +140,14 @@ window.addEventListener('keydown', function(e){
     else if (key == "c") clearCalculator();
     else if (key == "e") equality();
 });
+
+//styling
+allBtnNumpad.forEach(function(element){
+    element.addEventListener('mouseover', () => {
+        element.classList.add("buttonGlow");
+    });
+    element.addEventListener('mouseout', () => {
+        element.classList.remove("buttonGlow");
+    });
+});
+

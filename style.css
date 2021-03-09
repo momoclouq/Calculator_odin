@@ -1,5 +1,9 @@
+body {
+    background-color: black;
+    color: white;
+}
+
 #header h1 {
-    border: 1px solid black;
     text-align: center;
 }
 
@@ -10,9 +14,10 @@
     flex-wrap: wrap;
     justify-content: space-between;
 
-    border: 1px solid black;
+    border: 1px solid white;
+    border-radius: 10px;
     margin: 0 auto;
-    margin-top: 50%;
+    margin-top: 100px;
     padding: 5px;
 }
 
@@ -21,10 +26,11 @@
 }
 
 #calculator #output {
-    border: 1px solid black;
-    border-radius: 5px;;
+    border: 1px solid white;
+    border-radius: 5px;
     min-height: 30px;
     width: 100%;
+    padding: 3px;
 }
 
 #numpad {
@@ -32,9 +38,26 @@
     grid-template-columns: auto auto auto;
 }
 
+#numpad button {
+    border-radius: 4px;
+}
+
+.buttonGlow {
+    background-color: #9f8aa8;
+    color: #f3f0f5;
+}
+
+#btn0 {
+    grid-column: 2 / span 1;
+}
+
 #error {
     min-height: 20px;
     width: 100%;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 3px 0;
+    padding: 3px;
 }
 
 #operators {
