@@ -53,9 +53,13 @@ for (let i = 0; i < allBtnNumpad.length; i++){
     allBtnNumpad[i].addEventListener("click", (e) => {
         let currentNum = e.target.textContent;
 
-        currentOperand += currentNum;
-        outputDiv.textContent += currentNum;
+        numInput(currentNum);
     });
+}
+
+function numInput(currentNum){
+    currentOperand += currentNum;
+    outputDiv.textContent += currentNum;
 }
 
 //scenario 2: enter operator
@@ -65,46 +69,54 @@ for (let i = 0; i < allBtnOperator.length; i++){
     allBtnOperator[i].addEventListener("click", e => {
         currentOperator = e.target.textContent;
 
-        if (currentOperand && "operands" in operation && operation.operator) {
-            let result = operate(operation.operands, parseInt(currentOperand), operation.operator);
-            outputDiv.textContent = result + " " + currentOperator + " ";
-            operation.operands = result;
-            operation.operator = currentOperator;
-        } else if (currentOperand) {
-            outputDiv.textContent += " " + currentOperator + " ";
-            operation.operands = parseInt(currentOperand);
-            operation.operator = currentOperator;
-        } else if ("operands" in operation){
-            outputDiv.textContent += " " + currentOperator + " ";
-            operation.operator = currentOperator;
-        } else {
-            errorDiv.textContent = "no operands initialized";
-            setTimeout(() => {
-                errorDiv.textContent = "";
-            }, 2000);
-        }
-
-        //reset
-        currentOperand = "";
+        operatorInput(currentOperator);
     });
+}
+
+function operatorInput(currentOperator){
+    if (currentOperand && "operands" in operation && operation.operator) {
+        let result = operate(operation.operands, parseInt(currentOperand), operation.operator);
+        outputDiv.textContent = result + " " + currentOperator + " ";
+        operation.operands = result;
+        operation.operator = currentOperator;
+    } else if (currentOperand) {
+        outputDiv.textContent += " " + currentOperator + " ";
+        operation.operands = parseInt(currentOperand);
+        operation.operator = currentOperator;
+    } else if ("operands" in operation){
+        outputDiv.textContent += " " + currentOperator + " ";
+        operation.operator = currentOperator;
+    } else {
+        errorDiv.textContent = "no operands initialized";
+        setTimeout(() => {
+            errorDiv.textContent = "";
+        }, 2000);
+    }
+
+    //reset
+    currentOperand = "";
 }
 
 //scenario 3: clear btn
 //reset the operation, reset the currentOperator and the currentOperand
 //add clear event (erase all operands and operator)
-clearBtn.addEventListener("click", function(){
+clearBtn.addEventListener("click", clearCalculator);
+
+function clearCalculator(){
     outputDiv.textContent = "";
     currentOperand = [];
     currentOperator = "";
     operation = {
         operator: ""
     };
-});
+}
 
 //scenario 4: equal.calculate btn
 //calculate the opearation, change the outputDiv, change the operation and the currentOperand (currentOperator)
 //add calculate evet to the calculate button (similar to basic operation between inputs)
-calculateBtn.addEventListener("click", function(){
+calculateBtn.addEventListener("click", equality);
+
+function equality(){
     if (currentOperand && "operands" in operation) {
         let result = operate(operation.operands, parseInt(currentOperand), operation.operator);
         outputDiv.textContent = result + " ";
@@ -118,10 +130,19 @@ calculateBtn.addEventListener("click", function(){
             errorDiv.textContent = "";
         }, 2000);
     }
-});
+}
 
 
 //styling
 allBtnNumpad.forEach(function(element){
     element.style.backgroundColor = "#b6bfb8";
+});
+
+//keyboard input
+window.addEventListener('keydown', function(e){
+    let key = e.key;
+    if (/^\d+$/.test(key)) numInput(key);
+    else if (/[+\-*/]/.test(key)) operatorInput(key);
+    else if (key == "c") clearCalculator();
+    else if (key == "e") equality();
 });
